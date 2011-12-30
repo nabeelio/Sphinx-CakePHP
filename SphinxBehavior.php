@@ -68,7 +68,7 @@ class SphinxBehavior extends ModelBehavior {
             $query['page'] = 1;
         }
 
-		include_once APP.'/Vendor/sphinx/sphinxapi.php';
+		App::import('Vendor', 'sphinxapi/sphinxapi');
 		$this->runtime[$model->alias]['sphinx'] = new SphinxClient();
 		$this->runtime[$model->alias]['sphinx']->setServer($this->settings[$model->alias]['server'], $this->settings[$model->alias]['port']);
 
@@ -107,7 +107,6 @@ class SphinxBehavior extends ModelBehavior {
         $this->runtime[$model->alias]['sphinx']->setLimits(($query['page'] - 1) * $query['limit'], $query['limit']);
         $indexes = !empty($query['sphinx']['index']) ? implode(',' , $query['sphinx']['index']) : '*';
         $result = $this->runtime[$model->alias]['sphinx']->query($query['search'], $indexes);
-
 		$this->total_results = !empty($result['total']) ? $result['total'] : 0;
 
         if ($result === false) {
