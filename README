@@ -1,0 +1,11 @@
+Updated version for the Sphinx Behavior by Vilen Tambovtsev
+
+I've updated this for Cake2.0, and also so it runs one query to Sphinx,
+instead of two (one for results, one for count)
+
+Also makes the search results that are returned from Sphinx available to
+the model (I use this to build filters for search)
+
+The original usage page is here:
+
+http://bakery.cakephp.org/articles/xumix/2009/07/11/sphinx-behavior
