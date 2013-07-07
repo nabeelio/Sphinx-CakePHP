@@ -3,8 +3,11 @@
  * Behavior for simple usage of Sphinx search engine
  * http://www.sphinxsearch.com
  *
- * Updated by Nabeel Shahzad <https://github.com/nshahzad/Sphinx-CakePHP>
- * @updated 12/2011
+ *
+ * Collaborated and now maintained by Cake N Keyboard <https://github.com/CakeNKeyboard/Sphinx-CakePHP>
+ * Updates @author CakeNKeyboard <https://github.com/CakeNKeyboard/>
+ *
+ * Derived from Nabeel Shahzad <https://github.com/nshahzad/Sphinx-CakePHP>
  *
  * @copyright 2008, Vilen Tambovtsev
  * @author  Vilen Tambovtsev
@@ -18,8 +21,8 @@ class SphinxBehavior extends ModelBehavior {
      * Used for runtime configuration of model
      */
     public $runtime = array();
-    public $_defaults = array('server' => 'localhost', 'port' => 3312);
-	public $total_results = null;
+    public $_defaults = array('server' => 'localhost', 'port' => 9312);
+    public $total_results = null;
 
     /**
      * Spinx client object
@@ -28,7 +31,7 @@ class SphinxBehavior extends ModelBehavior {
      */
     public $sphinx = null;
 
-    public function setup(&$model, $config = array()) {
+    public function setup(Model $model, $config = array()) {
         $settings = array_merge($this->_defaults, (array)$config);
         $this->settings[$model->alias] = $settings;
     }
@@ -40,7 +43,7 @@ class SphinxBehavior extends ModelBehavior {
      * @return array Modified query
      * @access public
      */
-    public function beforeFind($model, $query) {
+    public function beforeFind(Model $model, $query) {
 
         if (empty($query['sphinx']) || empty($query['search'])) {
 			return true;
