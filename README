@@ -1,3 +1,7 @@
+Updated to further maintain.
+
+Derived version from the Sphinx Behavior by @nshahzad
+
 Updated version for the Sphinx Behavior by Vilen Tambovtsev
 
 I've updated this for Cake2.0, and also so it runs one query to Sphinx,
