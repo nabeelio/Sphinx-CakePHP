@@ -22,7 +22,7 @@ class SphinxBehavior extends ModelBehavior {
      */
     public $runtime = array();
     public $_defaults = array('server' => 'localhost', 'port' => 9312);
-    public $total_results = null;
+	public $total_results = null;
 
     /**
      * Spinx client object
@@ -102,6 +102,8 @@ class SphinxBehavior extends ModelBehavior {
                 case 'sortMode':
                     $this->runtime[$model->alias]['sphinx']->SetSortMode(key($setting), reset($setting));
                     break;
+                case 'rankingMode':
+                    $this->runtime[$model->alias]['sphinx']->SetRankingMode(key($setting), reset($setting));
                 default:
                     break;
             }
@@ -148,3 +150,5 @@ class SphinxBehavior extends ModelBehavior {
         return $query;
     }
 }
+
+
