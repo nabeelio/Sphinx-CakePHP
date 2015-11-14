@@ -13,7 +13,8 @@
  * @author  Vilen Tambovtsev
  * @license      http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-
+App::import('Vendor', 'gigablah/sphinxphp/src/Sphinx/SphinxClient');
+use Sphinx\SphinxClient;
 
 class SphinxBehavior extends ModelBehavior {
 
@@ -71,7 +72,6 @@ class SphinxBehavior extends ModelBehavior {
             $query['page'] = 1;
         }
 
-		App::import('Vendor', 'sphinxapi/sphinxapi');
 		$this->runtime[$model->alias]['sphinx'] = new SphinxClient();
 		$this->runtime[$model->alias]['sphinx']->setServer($this->settings[$model->alias]['server'], $this->settings[$model->alias]['port']);
 

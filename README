@@ -23,6 +23,23 @@ _[Manual]_
 * Copy the resulting folder to `app/Plugin`
 * Rename the folder you just copied to `SphinxCakephp`
 
+_[Composer]_
+
+in the `composer.json` file of your project add
+```
+"repositories":
+[
+    {
+        "type": "vcs",
+        "url": "https://github.com/nshahzad/Sphinx-CakePHP"
+    }
+],
+"require":{
+    "nshahzad/sphinx-cakephp": "dev-master"
+}
+```
+The plugin will be installed in your Plugin directory.
+
 ### Usage
 
 Make sure the plugin is loaded in `app/Config/bootstrap.php`.
