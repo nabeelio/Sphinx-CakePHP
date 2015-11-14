@@ -93,7 +93,7 @@ class SphinxBehavior extends ModelBehavior {
                     $method = 'Set' . $key;
                     foreach ($setting as $arg) {
                         $arg[3] = empty($arg[3]) ? false : $arg[3];
-                        $this->runtime[$model->alias]['sphinx']->{$method}($arg[0], (array)$arg[1], $arg[2], $arg[3]);
+                        $this->runtime[$model->alias]['sphinx']->{$method}($arg[0], $arg[1], $arg[2], $arg[3]);
                     }
                    break;
                 case 'matchMode':
