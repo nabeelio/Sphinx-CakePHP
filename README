@@ -1,6 +1,6 @@
 Updated to further maintain.
 
-Derived version from the Sphinx Behavior by @nshahzad
+Derived version from the Sphinx Behavior by @nabeelio
 
 Updated version for the Sphinx Behavior by Vilen Tambovtsev
 
@@ -31,11 +31,11 @@ in the `composer.json` file of your project add
 [
     {
         "type": "vcs",
-        "url": "https://github.com/nshahzad/Sphinx-CakePHP"
+        "url": "https://github.com/nabeelio/Sphinx-CakePHP"
     }
 ],
 "require":{
-    "nshahzad/sphinx-cakephp": "dev-master"
+    "nabeelio/sphinx-cakephp": "dev-master"
 }
 ```
 The plugin will be installed in your Plugin directory.
