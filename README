@@ -13,3 +13,37 @@ the model (I use this to build filters for search)
 The original usage page is here:
 
 http://bakery.cakephp.org/articles/xumix/2009/07/11/sphinx-behavior
+
+### Installation
+
+_[Manual]_
+
+* Download this: [https://github.com/nshahzad/Sphinx-CakePHP/archive/master.zip](https://github.com/nshahzad/Sphinx-CakePHP/archive/master.zip)
+* Unzip that download.
+* Copy the resulting folder to `app/Plugin`
+* Rename the folder you just copied to `SphinxCakephp`
+
+_[Composer]_
+
+in the `composer.json` file of your project add
+```
+"repositories":
+[
+    {
+        "type": "vcs",
+        "url": "https://github.com/nshahzad/Sphinx-CakePHP"
+    }
+],
+"require":{
+    "nshahzad/sphinx-cakephp": "dev-master"
+}
+```
+The plugin will be installed in your Plugin directory.
+
+### Usage
+
+Make sure the plugin is loaded in `app/Config/bootstrap.php`.
+
+```php
+CakePlugin::load('SphinxCakephp');
+```
