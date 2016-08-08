@@ -44,7 +44,7 @@ class SphinxBehavior extends ModelBehavior {
      */
     public function beforeFind(Model $model, $query) {
 
-        if (empty($query['sphinx']) || empty($query['search'])) {
+        if (empty($query['sphinx']) && !$this->_matchModeEquals($query, SphinxClient::SPH_MATCH_FULLSCAN)) {
             return true;
         }
 
@@ -146,6 +146,16 @@ class SphinxBehavior extends ModelBehavior {
         }
 
         return $query;
+    }
+
+    /**
+     * checks if the matchmode is set and if it equals the given value
+     * @param array $query
+     * @param int $matchMode
+     * @return boolean
+     */
+    protected function _matchModeEquals($query, $matchMode){
+        return (!empty($query['sphinx']['matchMode']) && $query['sphinx']['matchMode'] == $matchMode);
     }
 }
 
