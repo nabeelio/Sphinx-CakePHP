@@ -22,6 +22,7 @@ class SphinxBehavior extends ModelBehavior {
     public $runtime = array();
     public $_defaults = array('server' => 'localhost', 'port' => 9312);
     public $total_results = null;
+    public $max_results = 1000;
 
     /**
      * Spinx client object
@@ -107,7 +108,7 @@ class SphinxBehavior extends ModelBehavior {
             }
         }
 
-        $this->runtime[$model->alias]['sphinx']->setLimits(($query['page'] - 1) * $query['limit'], $query['limit']);
+        $this->runtime[$model->alias]['sphinx']->setLimits(($query['page'] - 1) * $query['limit'], $query['limit'], $this->max_results);
         $indexes = !empty($query['sphinx']['index']) ? implode(',' , $query['sphinx']['index']) : '*';
         $result = $this->runtime[$model->alias]['sphinx']->query($query['search'], $indexes);
         $this->total_results = !empty($result['total']) ? $result['total'] : 0;
@@ -157,6 +158,14 @@ class SphinxBehavior extends ModelBehavior {
     protected function _matchModeEquals($query, $matchMode){
         return (!empty($query['sphinx']['matchMode']) && $query['sphinx']['matchMode'] == $matchMode);
     }
+
+    /**
+     * sets the max_results property
+     * @param Model $model
+     * @param int $max_results
+     * @return boolean
+     */
+    public function setMaxResults(Model $model, $max_results){
+        $this->max_results = $max_results;
+    }
 }
-
-
